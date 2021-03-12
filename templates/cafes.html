@@ -1,0 +1,106 @@
+{% extends 'bootstrap/base.html' %}
+{% include "header.html" %}
+{% block styles %}
+{{ super() }}
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
+  <script src="https://kit.fontawesome.com/aa05dadf6a.js" crossorigin="anonymous"></script>
+
+{% endblock %}
+
+{% block title %}All Cafes{% endblock %}
+<div class="container-fluid"></div>
+
+{% block content %}
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-sm-12"> -->
+
+      <h1>All Cafes</h1>
+      {% if current_user.is_authenticated %}
+      <a class="btn btn-warning btn-lg" href="{{ url_for('add_cafe') }}" role="button">Add Cafe</a>
+      {% endif %}
+
+  
+	  <!-- <table class="table"> -->
+      {% for cafe in cafes %}
+                <div class="container cafe-container">
+                    <div class="row">
+
+                        <div class="col-lg-3 row-cafe-img">
+                            <a href="{{ cafe.map_url }}" data-toggle="tooltip" title="Click to go to Map">
+                                <img class="card-img-top cafe-image" src="{{ cafe.img_url }}" alt="Card image cap" width="270" height="200">
+                            </a>
+                        </div>
+
+                        <div class="col-lg-6 row-cafe-info">
+
+                            <h3>{{ cafe.name }}</h3>
+                            <span style="float:right">
+                              {% if current_user.is_authenticated %}
+                                    <a href="{{ url_for('edit', id=cafe.id) }}" data-toggle="tooltip" title="Edit Cafe information"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ url_for('delete', id=cafe.id) }}" data-toggle="tooltip" title="Delete"><i class="fas fa-trash-alt"></i></a>
+                              {% endif %}
+                            </span>
+                            <p data-toggle="tooltip" title="Location">{{ cafe.location }}</p>
+                            <p>
+                                {% if cafe.has_sockets == 1 %}
+                                    <i class="fas fa-plug" data-toggle="tooltip" title="Has Sockets for Power"></i>
+                                {% endif %}
+
+                                {% if cafe.has_wifi == 1 %}
+                                    <i class="fas fa-wifi" data-toggle="tooltip" title="Has Wifi"></i>
+                                {% endif %}
+
+                                {% if cafe.has_toilet == 1 %}
+                                    <i class="fas fa-restroom" data-toggle="tooltip" title="Has Restrooms"></i>
+                                {% endif %}
+
+                                {% if cafe.can_take_calls == 1 %}
+                                    <i class="fas fa-phone-volume" data-toggle="tooltip" title="Can make calls"></i>
+                                {% endif %}
+                            </p>
+                            <p><i class="fas fa-chair" data-toggle="tooltip" title="Seating Capacity"></i>{{ cafe.seats }}
+                                <span style="float:right">
+                                    <i class="fas fa-coffee" data-toggle="tooltip" title="Price of Coffee"></i>
+                                    {{ cafe.coffee_price }}
+                                </span>
+                            </p>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <hr>
+
+              {% endfor %}
+      </div>
+
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+
+<!-- </body>
+</html> -->
+    <!-- </div> -->
+      <!-- {% for cafe in cafes %}
+      <tr>
+        {% for item in row %}
+          {% if item[0:4] == "http" %}
+          <td><a href="{{item}}">Maps Link</a></td>
+          {% else %}
+          <td>{{item}}</td> 
+          {% endif %}
+        {% endfor %}
+      </tr>
+        {% endfor %} 
+  	  </table>
+
+      <p><a href="{{ url_for ('home') }}">Return to index page</a></p>
+
+    </div>
+  </div>
+</div> -->
+
+{% endblock %}

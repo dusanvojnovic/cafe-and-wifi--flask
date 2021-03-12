@@ -1,0 +1,42 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% include "header.html" %}
+{% block content %}
+
+
+
+<head>
+    <style>
+    body  {
+      background-image: url("https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80") ;
+      background-size: cover;
+      height: 100%;
+      width: 100%;
+      color: #fff;
+      
+    }
+    
+    </style>
+        </head>
+
+<form action="" method="post" style="text-align:center" novalidate>
+<div class="form" >
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-12">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+            <p>{{message}}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "warning"}) }}
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+
+{% endblock %}

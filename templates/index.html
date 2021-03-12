@@ -1,0 +1,35 @@
+{% extends 'bootstrap/base.html' %}
+{% include "header.html" %}
+
+{% block styles %}
+{{ super() }}
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
+{% endblock %}
+
+{% block title %}Coffee and Wifi{% endblock %}
+
+{% block content %}
+<head>
+    <style>
+    body  {
+      background-image: url("https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80") ;
+      background-size: cover;
+      height: 100%;
+      width: 100%;
+      color: #fff;
+    }
+    
+    </style>
+        </head>
+
+<!-- <div class="jumbotron text-center"> -->
+  <div class="container text-center" id="home">
+  <h1 class="display-4">☕️ Coffee & Wifi 💻</h1>
+  <p class="lead">Want to work in a cafe but need power and wifi?</p>
+  <hr class="my-4">
+  <p>You've found the right place! Checkout collection of cafes with data on power socket, wifi, call receiving availability and coffee price.</p>
+  <a class="btn btn-warning btn-lg" href="{{ url_for('cafes') }}" role="button">Show All Cafes</a>
+</div>
+</div>
+
+{% endblock %}
